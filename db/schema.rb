@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_27_141350) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_27_153403) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,6 +26,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_27_141350) do
     t.index ["user_id"], name: "index_bars_on_user_id"
   end
 
+  create_table "events", force: :cascade do |t|
+    t.date "date"
+    t.string "name"
+    t.string "status"
+    t.string "bar_comment"
+    t.string "artist_comment"
+    t.bigint "user_id", null: false
+    t.bigint "bar_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bar_id"], name: "index_events_on_bar_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -39,4 +53,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_27_141350) do
   end
 
   add_foreign_key "bars", "users"
+  add_foreign_key "events", "bars"
+  add_foreign_key "events", "users"
 end
