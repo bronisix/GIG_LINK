@@ -1,0 +1,11 @@
+<h2><%= @bar.name %></h2>
+<p><%= @bar.url %></p>
+<p><%= @bar.telephone %></p>
+<%= link_to 'Back to Bars', bars_path %>
+<%= link_to 'Edit', edit_bar_path %>
+<%= link_to 'Delete',
+bar_path(@bar),
+data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%>
+
+<%# :name, :url, :telephone, :photo %>

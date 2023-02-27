@@ -1,0 +1,18 @@
+<div class="container py-5">
+  <div class="row">
+    <div class="col-12 col-md-6 offset-lg-3">
+      <div class="bg-white rounded p-3 shadow">
+        <h3>Create a new bar</h3>
+        <%= simple_form_for @bar do |f| %>
+          <%= f.input :name, placeholder: 'Où est-ce que ça boit?' %>
+          <%= f.input :url, placeholder: 'Où est-ce que se hacke?' %>
+          <%= f.input :telephone, placeholder: 'Où est-ce que ça se call?' %>
+          <%# <%= f.input :photo, placeholder: 'Où est-ce que ça ce voit?' %>
+          <%= f.submit class: 'btn btn-flat' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# :name, :url, :telephone, :photo %>

@@ -4,3 +4,4 @@ class Bar < ApplicationRecord
 
   validates :name, presence: true
   validates :location, presence: true, uniqueness: true
+end
