@@ -13,7 +13,6 @@ class BarsController < ApplicationController
   end
 
   def create
-    raise
     @bar = Bar.new(bar_params)
     @user = current_user
     @bar.user = @user
