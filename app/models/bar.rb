@@ -5,5 +5,5 @@ class Bar < ApplicationRecord
 
 
   validates :name, presence: true
-  validates :location, presence: true, uniqueness: true
+  validates :url, presence: true
 end
