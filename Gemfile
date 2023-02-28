@@ -48,6 +48,9 @@ gem "sassc-rails"
 # ajouter la gem cloudinary pour les photos
 gem "cloudinary"
 
+#ajouter les authorisations avec pundit
+gem "pundit"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
