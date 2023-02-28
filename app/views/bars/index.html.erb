@@ -1,7 +1,36 @@
-<h1>My Bar(s)</h1>
+<h1>All Bars</h1>
 <ul>
   <% @bars.each do |bar| %>
-    <li> <%= link_to bar.name, bar_path(bar) %></li>
+    <li> <%= link_to bar.name, bar_path(bar) %> <%= link_to 'request event', new_bar_event_path(bar), class:"btn btn-light" %></li>
+
     <% end %>
 </ul>
 <%= link_to 'Add new bar', new_bar_path %>
+
+
+<h1> My events request</h1>
+<ul>
+  <% @events.each do |event| %>
+  <li> Where <%= event.bar.name %>
+    <li> Event number <%= event.id %>
+    <li> Name:<%= event.name %> </li>
+    <li> When: <%= event.date %> </li>
+    <li> Status:<%= event.status %> </li>
+    <% end %>
+</ul>
+
+<h1> My events validated</h1>
+<ul>
+  <% @events.each do |event| %>
+    <% if event.status == "confirmed" %>
+      <li> Event number <%= event.id %>
+      <li> Name:<%= event.name %> </li>
+      <li> When: <%= event.date %> </li>
+      <li> Status:<%= event.status %> </li>
+
+    <% else  %>
+      <li> <%= event.bar.name %> : waiting for confirmation</li>
+    <% end %>
+
+  <% end %>
+</ul>

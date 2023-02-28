@@ -3,6 +3,7 @@ class BarsController < ApplicationController
 
   def index
     @bars = policy_scope(Bar)
+    @events = current_user.events
   end
 
   def show
@@ -40,7 +41,10 @@ class BarsController < ApplicationController
   end
 
   def destroy
-
+    @bar = Bar.find(params[:id])
+    @bar.destroy
+    authorize @bar
+    redirect_to root_path, status: :see_other
   end
 
   private

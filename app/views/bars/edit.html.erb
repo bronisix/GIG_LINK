@@ -4,10 +4,11 @@
       <div class="bg-white rounded p-3 shadow">
         <h3>Create a new bar</h3>
         <%= simple_form_for @bar do |f| %>
-          <%= f.input :name, placeholder: 'Où est-ce que ça boit?' %>
+          <%= f.input :name, placeholder: 'Nom du bar?' %>
+          <%= f.input :location, placeholder: 'Adresse du bar?'%>
           <%= f.input :url, placeholder: 'Où est-ce que se hacke?' %>
           <%= f.input :telephone, placeholder: 'Où est-ce que ça se call?' %>
-          <%= f.input :photo, as: :file, placeholder: 'Où est-ce que ça ce voit?' %>
+          <%= f.input :photo, as: :file %>
           <%= f.submit class: 'btn btn-flat' %>
         <% end %>
       </div>
