@@ -4,6 +4,23 @@
 <%= link_to 'Back to Bars', bars_path %>
 <%= link_to 'Edit', edit_bar_path, method: :patch if policy(@bar).edit? %>
 <%= link_to 'Delete',
+
+
+<% @bar.events.each do |event|%>
+
+  <%= event.name %>
+
+  <%= event.date %>
+
+  <%= event.bar_comment %>
+
+  <%= link_to 'edit event', edit_bar_event_path(@bar, event) %> <%= link_to 'delete event', event_path(event), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+  <% end %>
+
+  <%= link_to 'Back to Bars', bars_path, class: 'btn btn-dark' %> <%= link_to 'Edit', edit_bar_path, class: 'btn btn-secondary' %> <%= link_to 'Create an event', new_bar_event_path(@bar), class: 'btn btn-success' %>
+
+
+
 bar_path(@bar),
 data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
 %>
