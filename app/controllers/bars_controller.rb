@@ -3,6 +3,7 @@ class BarsController < ApplicationController
 
   def index
     @bars = policy_scope(Bar)
+    @events = current_user.events
   end
 
   def show
