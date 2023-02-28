@@ -11,7 +11,10 @@
       <p> <%= event.date %></p>
       <p> <%= event.bar_comment %></p>
       <%= link_to 'edit event', edit_bar_event_path(@bar, event) %>
-      <%= link_to 'delete event', event_path(event), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, method: :delete if policy(event).destroy?  %>
+      <%= link_to 'delete event', event_path(event), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} if policy(event).destroy? %>
+      <%= link_to 'Accept', accept_bar_event_path(@bar, event), data: { turbo_method: :patch, turbo_confirm: 'Are you sure?' } if policy(event).accept?  %>
+      <%= link_to 'Decline', decline_bar_event_path(@bar, event), data: { turbo_method: :patch, turbo_confirm: 'Are you sure?' } if policy(event).decline?  %>
+
     <% end %>
 </div>
 

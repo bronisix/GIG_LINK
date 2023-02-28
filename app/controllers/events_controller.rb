@@ -39,6 +39,22 @@ class EventsController < ApplicationController
     end
   end
 
+  def accept
+    # selectionner l'event sur lequel on va appliquer le changement
+    @event = Event.find(params[:id])
+    # changer son status to accept
+    @event.status = "accepted"
+    @event.save
+    authorize @event
+  end
+
+  def decline
+    @event = Event.find(params[:id])
+    @event.status = "declined"
+    @event.save
+    authorize @event
+  end
+
   def destroy
     @event = Event.find(params[:id])
     authorize @event
