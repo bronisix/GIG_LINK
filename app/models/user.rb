@@ -8,6 +8,5 @@ class User < ApplicationRecord
   has_one_attached :photo
   has_many :bars
 
-
   validates :email, presence: true
 end

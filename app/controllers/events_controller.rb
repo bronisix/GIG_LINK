@@ -23,12 +23,13 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+    @bar = @event.bar
   end
 
   def update
-    @event = Event.update(event_params)
-    if @event.save
-      redirect_to bar_path(@bar)
+    @event = Event.find(params[:id])
+    if @event.update(event_params)
+      redirect_to bar_path(@event.bar)
     else
       render :new, status: :unprocessable_entity
     end
@@ -37,7 +38,7 @@ class EventsController < ApplicationController
   def destroy
     @event = Event.find(params[:id])
     @event.destroy
-    redirect_to bar_path(@bar), status: :see_other
+    redirect_to bar_path(@event.bar), status: :see_other
   end
 
   private
@@ -47,7 +48,7 @@ class EventsController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:user_id])
+    @user = current_user
   end
 
   def set_bar

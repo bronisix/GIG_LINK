@@ -3,5 +3,7 @@
 <p><%= @bar.telephone %></p>
 <%= link_to 'Back to Bars', bars_path %>
 <%= link_to 'Edit', edit_bar_path, method: :patch if policy(@bar).edit? %>
-
-
+<%= link_to 'Delete',
+bar_path(@bar),
+data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%>
