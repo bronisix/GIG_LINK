@@ -6,7 +6,5 @@ class User < ApplicationRecord
   has_many :events
   has_one_attached :photo
 
-
-  
   validates :email, presence: true
 end
