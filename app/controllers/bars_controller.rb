@@ -14,9 +14,20 @@ class BarsController < ApplicationController
 
   def create
     @bar = Bar.new(bar_params)
-    @bar.save
-    redirect_to bar_path(@bar)
+    @user = current_user
+    @bar.user = @user
+    if @bar.save!
+      redirect_to bar_path(@bar)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
+
+  # def create
+  #   @bar = Bar.new(bar_params)
+  #   @bar.save
+  #   redirect_to bar_path(@bar)
+  # end
 
   def edit
     @bar = Bar.find(params[:id])
@@ -35,6 +46,6 @@ class BarsController < ApplicationController
   end
 
   def bar_params
-    params.require(:bar).permit(:name, :url, :telephone, :photo)
+    params.require(:bar).permit(:name, :url, :telephone)
   end
 end
