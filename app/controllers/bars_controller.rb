@@ -40,7 +40,10 @@ class BarsController < ApplicationController
   end
 
   def destroy
-    
+    @bar = Bar.find(params[:id])
+    @bar.destroy
+    authorize @bar
+    redirect_to root_path, status: :see_other
   end
 
   private
