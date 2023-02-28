@@ -1,0 +1,8 @@
+<h1>Mes bars</h1>
+<ul>
+  <% @mybars.each do |bar| %>
+    <li> <%= link_to bar.name, bar_path(bar) %> </li>
+
+    <% end %>
+</ul>
+<%= link_to 'Add new bar', new_bar_path %>
