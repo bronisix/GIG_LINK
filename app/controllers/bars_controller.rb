@@ -2,20 +2,23 @@ class BarsController < ApplicationController
   before_action :set_bar, only: [:show, :destroy]
 
   def index
-    @bars = Bar.all
+    @bars = policy_scope(Bar)
   end
 
   def show
+    authorize @bar
   end
 
   def new
     @bar = Bar.new
+    authorize @bar
   end
 
   def create
     @bar = Bar.new(bar_params)
     @user = current_user
     @bar.user = @user
+    authorize @bar
     if @bar.save!
       redirect_to bar_path(@bar)
     else
@@ -23,20 +26,21 @@ class BarsController < ApplicationController
     end
   end
 
-  # def create
-  #   @bar = Bar.new(bar_params)
-  #   @bar.save
-  #   redirect_to bar_path(@bar)
-  # end
 
   def edit
     @bar = Bar.find(params[:id])
+    authorize @bar
   end
 
   def update
     @bar = Bar.find(params[:id])
     @bar.update(bar_params)
     redirect_to bar_path(@bar)
+    authorize @bar
+  end
+
+  def destroy
+    
   end
 
   private
