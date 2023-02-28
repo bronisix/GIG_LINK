@@ -1,5 +1,5 @@
 class EventPolicy < ApplicationPolicy
-  
+
   def show?
     true
   end
@@ -10,6 +10,14 @@ class EventPolicy < ApplicationPolicy
 
   def update?
     true
+  end
+
+  def accept?
+    record.bar.user == user
+  end
+
+  def decline?
+    record.bar.user == user
   end
 
   def destroy?

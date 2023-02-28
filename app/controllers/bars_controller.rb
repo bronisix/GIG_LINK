@@ -54,6 +54,6 @@ class BarsController < ApplicationController
   end
 
   def bar_params
-    params.require(:bar).permit(:name, :url, :telephone)
+    params.require(:bar).permit(:name, :url, :telephone, :photo)
   end
 end
