@@ -1,6 +1,7 @@
 <h2><%= @bar.name %></h2>
 <p><%= @bar.url %></p>
 <p><%= @bar.telephone %></p>
+<%= cl_image_tag @bar.photo.key, height: 300, width: 400, crop: :fill %>
 
 <br>
 <div class="container">
