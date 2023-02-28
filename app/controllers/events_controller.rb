@@ -3,17 +3,19 @@ class EventsController < ApplicationController
   before_action :set_bar, only: %i[new create]
 
   def index
-    @events = Event.all
+    @events = policy_scope(Event)
   end
 
   def new
     @event = Event.new
+    authorize @event
   end
 
   def create
     @event = Event.new(event_params)
     @event.user = @user
     @event.bar = @bar
+    authorize @event
     if @event.save
       redirect_to bar_path(@bar)
     else
@@ -24,10 +26,12 @@ class EventsController < ApplicationController
   def edit
     @event = Event.find(params[:id])
     @bar = @event.bar
+    authorize @event
   end
 
   def update
     @event = Event.find(params[:id])
+    authorize @event
     if @event.update(event_params)
       redirect_to bar_path(@event.bar)
     else
@@ -37,6 +41,7 @@ class EventsController < ApplicationController
 
   def destroy
     @event = Event.find(params[:id])
+    authorize @event
     @event.destroy
     redirect_to bar_path(@event.bar), status: :see_other
   end
