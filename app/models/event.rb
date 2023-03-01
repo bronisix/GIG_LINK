@@ -6,5 +6,4 @@ class Event < ApplicationRecord
 
   validates :date, presence: true
   validates :name, presence: true
-  validates :bar_comment, presence: true
 end
