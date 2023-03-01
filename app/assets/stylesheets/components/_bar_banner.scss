@@ -1,0 +1,54 @@
+.bar_banner {
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0;
+  position: relative;
+}
+
+// .blur {
+//   background: rgba(255, 255, 255, 0.2); // Make sure this color has an opacity of less than 1
+//   backdrop-filter: blur(8px); // This be the blur
+// }
+
+.bar_banner h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.bar_banner p {
+  font-size: 20px;
+  color: white;
+  opacity: 1;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+.edit_bar_btn {
+  font-size: 24px;
+  color: white;
+  text-align: right;
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+}
+
+.edit_bar_btn:hover {
+  color: pink;
+}
+
+.delete_bar_btn {
+  font-size: 24px;
+  color: white;
+  // text-align: right;
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+}
+
+.delete_bar_btn:hover {
+  color: red;
+}
