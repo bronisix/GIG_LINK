@@ -6,39 +6,4 @@
 
 </div>
 
-<div class="container">
-  <h2>My Events</h2>
-
-  <div class="row">
-    <% ['pending', 'accepted', 'passed', 'declined'].each do |status| %>
-      <div class="col-md-3">
-        <h3><%= status.capitalize %></h3>
-        <% filtered_events = @mybars.flat_map(&:events).select { |event| event.status == status } %>
-        <% if filtered_events.any? %>
-          <div class="list-group">
-            <% filtered_events.each do |event| %>
-              <div class="list-group-item">
-                <h4 class="list-group-item-heading"><%= event.name %></h4>
-                <h5 class="list-group-item-heading"> <%= event.bar.name %></h5>
-                <p class="list-group-item-text">Date: <%= event.date %></p>
-                <p class="list-group-item-text">Artist Name: <%= event.user.username %></p>
-                <p class="list-group-item-text">Bar Comment: <%= event.bar_comment %></p>
-                <p class="list-group-item-text">Artist Comment: <%= event.artist_comment %></p>
-                <% if event.status == 'pending' %>
-                  <% if policy(event).accept? %>
-                    <%= link_to 'Accept', accept_bar_event_path(@mybars, event), class: 'btn btn-success', data: { turbo_method: :patch, turbo_confirm: 'Are you sure?' } %>
-                  <% end %>
-                  <% if policy(event).decline? %>
-                    <%= link_to 'Decline', decline_bar_event_path(@mybars, event), class: 'btn btn-danger', data: { turbo_method: :patch, turbo_confirm: 'Are you sure?' } %>
-                  <% end %>
-                <% end %>
-              </div>
-            <% end %>
-          </div>
-        <% else %>
-          <p>No events with status <%= status %> found.</p>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-</div>
+<%= render "myevents", mybars: @mybars %>
