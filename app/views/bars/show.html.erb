@@ -1,7 +1,11 @@
 <h2><%= @bar.name %></h2>
 <p><%= @bar.url %></p>
 <p><%= @bar.telephone %></p>
-<%= cl_image_tag @bar.photo.key, height: 300, width: 400, crop: :fill %>
+<% if @bar.photo.attached? %>
+  <%= cl_image_tag(@bar.photo.key, height: 300, width: 400, crop: :fill) %>
+<% else %>
+  <img src="">
+<% end %>
 
 <br>
 <div class="container">
@@ -22,4 +26,4 @@
 <%= link_to 'Back to Bars', bars_path, class: 'btn btn-dark' %>
 <%= link_to 'Edit', edit_bar_path, class: 'btn btn-secondary', method: :patch if policy(@bar).edit? %>
 <%= link_to 'Create an event', new_bar_event_path(@bar), class: 'btn btn-success' %>
-<%= link_to 'Delete', bar_path(@bar), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-danger" %>
+<%= link_to 'Delete', bar_path(@bar), class: 'btn btn-danger', data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} if policy(@bar).destroy? %>
