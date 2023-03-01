@@ -4,6 +4,15 @@ class BarsController < ApplicationController
   def index
     @bars = policy_scope(Bar)
     @events = current_user.events
+    @markers = @bars.geocoded.map do |bar|
+      {
+        lat: bar.latitude,
+        lng: bar.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {bar: bar}),
+        marker_html: render_to_string(partial: "marker")
+
+      }
+    end
   end
 
   def mybars
@@ -58,6 +67,6 @@ class BarsController < ApplicationController
   end
 
   def bar_params
-    params.require(:bar).permit(:name, :url, :telephone, :photo)
+    params.require(:bar).permit(:name, :url, :telephone, :photo, :location)
   end
 end

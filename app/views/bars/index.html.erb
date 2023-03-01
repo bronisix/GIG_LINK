@@ -1,7 +1,22 @@
 <div class="container">
 <h1>All Bars</h1>
 
- <%= render "barlist", bars: @bars %>
+<div class="">
+  <div class="row">
+    <div class="col-8">
+      <%= render "barlist", bars: @bars %>
+    </div>
+    <div class="col-4">
+      <div style="height: 100vh;"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+      </div>
+    </div>
+  </div>
+
+
+
 
 <%= render "myevents", mybars: @bars %>
 
