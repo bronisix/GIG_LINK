@@ -1,0 +1,15 @@
+<div class="cards-bar-grid">
+    <% bars.each do |bar| %>
+
+          <%= link_to bar_path(bar) do %>
+            <div class="card-bar mb-3">
+              <img src= <%= cl_image_path bar.photo.key%> />
+              <div class="card-bar-infos">
+                <h2> <%= bar.name %> </h2>
+                <p> <%= bar.location %></p>
+              </div>
+
+        </div>
+      <% end %>
+    <% end %>
+  </div>
