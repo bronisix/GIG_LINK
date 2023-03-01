@@ -20,42 +20,52 @@ robin = User.create!(username: "Robin", email: "robin@hello.fr", password: "1234
 puts "user created"
 
 puts "Creating bars..."
-# les_marquises = { name: "Les Marquises (Guillaume)", url: "wwww.lesmarquises.freu", telephone: "01 42 34 56 78", user: guillaume }
-# cafe_pop = { name: "Pizza East (Audrey)", url: "wwww.lecafepopulaire.usofa", telephone: "01 44 24 78 78", photo: "https://lh3.googleusercontent.com/p/AF1QipOHD5fQM_j5utkUxuX4M7HosNSpqp8orpsVntjT=s1600-w640", user: audrey }
-# doc_feelgood = { name: "Docteur Feelgood (Hugo)", url: "wwww.drfg.de", telephone: "08 23 40 90 12", photo: "https://lh3.googleusercontent.com/p/AF1QipOHD5fQM_j5utkUxuX4M7HosNSpqp8orpsVntjT=s1600-w640", user: hugo }
-# dilf = { name: "Les DILF (Robin)", url: "wwww.lesdilfs.xxx", telephone: "06 09 12 47 94", photo: "https://media.timeout.com/images/103569464/image.jpg", user: robin }
 
-# [les_marquises, cafe_pop, doc_feelgood, dilf].each do |attributes|
-#   file = URI.open("https://media-cdn.tripadvisor.com/media/photo-s/0e/03/44/7b/interieur.jpg")
-#   bar = Bar.new(attributes)
-#   bar.photo.attach(io: file, filename: "les_marquises.png", content_type: "image/png")
-#   bar.save!
-#   puts "Created #{bar.name}"
-# end
-# puts "Finished!"
-
-bar = Bar.new(name: "Les Marquises (Guillaume)", url: "www.lesmarquises.freu", telephone: "01 42 34 56 78", user: guillaume)
+bar = Bar.new(name: "Les Marquises (Guillaume)", url: "www.lesmarquises.freu", location: "21 rue du tage 75013 Paris", telephone: "01 42 34 56 78", user: guillaume)
 file = URI.open("https://media-cdn.tripadvisor.com/media/photo-s/0e/03/44/7b/interieur.jpg")
 bar.photo.attach(io: file, filename: "les_marquises.png", content_type: "image/png")
 bar.save!
 puts "Created #{bar.name}"
 
-bar = Bar.new(name: "Café Populaire (Audrey)", url: "www.lecafepopulaire.usofa", telephone: "01 44 24 78 78", user: audrey)
+bar = Bar.new(name: "Café Populaire (Audrey)", url: "www.lecafepopulaire.usofa", location: "32 rue d'oberkampf 75011 Paris", telephone: "01 44 24 78 78", user: audrey)
 file = URI.open("https://lh3.googleusercontent.com/p/AF1QipOHD5fQM_j5utkUxuX4M7HosNSpqp8orpsVntjT=s1600-w640")
 bar.photo.attach(io: file, filename: "cafe_populaire.png", content_type: "image/png")
 bar.save!
 puts "Created #{bar.name}"
 
-bar = Bar.new(name: "Dr Feelgood (Hugo)", url: "www.drfg.de", telephone: "08 23 40 90 12", user: hugo)
+bar = Bar.new(name: "Dr Feelgood (Hugo)", url: "www.drfg.de", location: "10 rue daumesnil 75012 Paris",telephone: "08 23 40 90 12", user: hugo)
 file = URI.open("https://s3-eu-west-1.amazonaws.com/privateaser-media/etab_photos/3578/750x375/32956.jpg")
 bar.photo.attach(io: file, filename: "dr_feelgood.png", content_type: "image/png")
 bar.save!
 puts "Created #{bar.name}"
 
-bar = Bar.new(name: "les DILFs (Robin)", url: "www.dilfs.xxx", telephone: "06 09 12 47 94", user: robin)
+bar = Bar.new(name: "les DILFs (Robin)", url: "www.dilfs.xxx", location: "21 rue Balard 75015 Paris", telephone: "06 09 12 47 94", user: robin)
 file = URI.open("https://media.timeout.com/images/103569464/image.jpg")
 bar.photo.attach(io: file, filename: "dilfs.png", content_type: "image/png")
 bar.save!
 puts "Created #{bar.name}"
+
+puts "Creating events..."
+bar1 = Bar.find_by(name: "Les Marquises (Guillaume)")
+event = Event.new(name: "Les DILF", date: Date.today, bar_id: bar1.id, user: guillaume, status: :pending)
+event.save!
+
+puts "Created #{event.name}"
+
+bar2 = Bar.find_by(name: "Café Populaire (Audrey)")
+event = Event.new(name: "Les arti-chauds", date: Date.today, bar_id: bar2.id, user: audrey, status: :accepted)
+event.save!
+
+puts "Created #{event.name}"
+
+bar3 = Bar.find_by(name: "Dr Feelgood (Hugo)")
+event = Event.new(name: "DaftPunk", date: Date.today, bar_id: bar3.id, user: hugo, status: :passed)
+event.save!
+
+puts "Created #{event.name}"
+
+bar4 = Bar.find_by(name: "Les Marquises (Guillaume)")
+event = Event.new(name: "Beyoncé", date: Date.today, bar_id: bar4.id, user: guillaume, status: :pending)
+event.save!
 
 puts "Finished!"
