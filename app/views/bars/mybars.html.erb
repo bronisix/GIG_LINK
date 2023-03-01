@@ -1,11 +1,10 @@
+<div class="container">
 <h1>Mes bars</h1>
-<ul>
-  <% @mybars.each do |bar| %>
-    <li> <%= link_to bar.name, bar_path(bar) %> </li>
-  <% end %>
-</ul>
+<%= render "barlist", bars: @mybars %>
 
-<%= link_to 'Add new bar', new_bar_path %>
+<%= link_to 'Add new bar', new_bar_path, class:'btn btn-primary' %>
+
+</div>
 
 <div class="container">
   <h2>My Events</h2>
