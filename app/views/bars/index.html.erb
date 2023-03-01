@@ -1,5 +1,7 @@
+<%= render 'shared/navbarmusician' %>
 <div class="container">
 <h1>All Bars</h1>
+
 
 <div class="">
   <div class="row">
@@ -16,10 +18,8 @@
   </div>
 
 
-
-
-<%= render "myevents", mybars: @bars %>
-
 <hr>
+<%= render "myevents", events: @events %>
+
 
 </div>
