@@ -6,6 +6,10 @@ class BarsController < ApplicationController
     @events = current_user.events
   end
 
+  def mybars
+    @mybars = current_user.bars
+  end
+
   def show
     authorize @bar
   end
