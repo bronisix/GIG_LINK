@@ -9,14 +9,18 @@
 <div class="container">
   <div class="row">
     <div class="cards col-sm-6">
+    <%= link_to bars_path do %>
       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/cognitives-s3/image/upload/c_fill,dpr_auto,f_auto,fl_lossy,g_auto,h_515,q_auto/v1/cog-aap/n/559/2022/May/16/FozdDtRrUKLohGybl5qP.jpg)">
-        <%= link_to "I'm an artist", bars_path %>
+      I'm an Artist
       </div>
+    <% end %>
     </div>
     <div class="cards col-sm-6">
+     <%= link_to mybars_path do %>
       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.westsiderag.com/wp-content/uploads/2020/01/BizJones_RichardHerschenfeld_205.jpeg)">
-        <%= link_to "I'm a bar owner", mybars_path %>
+        I'm a bar owner
       </div>
+      <% end %>
     </div>
   </div>
 </div>
