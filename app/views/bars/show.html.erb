@@ -1,33 +1,57 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path @bar.photo.key %>);">
-  <div class="container">
-    <h1><%= @bar.name %></h1>
-    <%# <p>Change your life and learn to code at one of our campuses around the world.</p> %>
+<div class='bar_banner' style='background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path @bar.photo.key %>); backdrop-filter: blur(5px);'>
+  <div class='container'>
+    <%= link_to @bar.url do %>
+      <h1><%= @bar.name %></h1>
+    <% end %>
     <br>
+    <p><i class="fa-solid fa-phone"></i> <%= @bar.telephone %></p>
+    <br>
+  </div>
+  <div>
+    <%= link_to '', bar_path(@bar), class:"fa-solid fa-trash delete_bar_btn", data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} if policy(@bar).destroy? %>
+    <%= link_to '', edit_bar_path, class:"fa-regular fa-pen-to-square edit_bar_btn", method: :patch if policy(@bar).edit? %>
   </div>
 </div>
 
-
-<p> Url : <%= @bar.url %></p>
-<p> Téléphone : <%= @bar.telephone %></p>
-
-
-<br>
-<div class="container">
-  <h2>My Events</h2>
-    <% @bar.events.each do |event|%>
-      <p> <%= event.name %></p>
-      <p> <%= event.date %></p>
-      <p> <%= event.bar_comment %></p>
-      <%= link_to 'edit event', edit_bar_event_path(@bar, event) %>
-      <%= link_to 'delete event', event_path(event), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} if policy(event).destroy? %>
-      <%= link_to 'Accept', accept_bar_event_path(@bar, event), data: { turbo_method: :patch, turbo_confirm: 'Are you sure?' } if policy(event).accept?  %>
-      <%= link_to 'Decline', decline_bar_event_path(@bar, event), data: { turbo_method: :patch, turbo_confirm: 'Are you sure?' } if policy(event).decline?  %>
-
-    <% end %>
+<div class='container mt-5'>
+  <div class='row'>
+    <div class='col-md-8'>
+    </div>
+    <div class='col-md-4 text-right'>
+      <%= link_to 'Back to Bars', bars_path, class: 'btn btn-dark' %>
+      <%= link_to 'Create an event', new_bar_event_path(@bar), class: 'btn btn-success' %>
+      <%# <%= link_to 'Delete', bar_path(@bar), class: 'btn btn-danger', data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} if policy(@bar).destroy? %>
+    </div>
+  </div>
 </div>
-
-<br>
-<%= link_to 'Back to Bars', bars_path, class: 'btn btn-dark' %>
-<%= link_to 'Edit', edit_bar_path, class: 'btn btn-secondary', method: :patch if policy(@bar).edit? %>
-<%= link_to 'Create an event', new_bar_event_path(@bar), class: 'btn btn-success' %>
-<%= link_to 'Delete', bar_path(@bar), class: 'btn btn-danger', data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} if policy(@bar).destroy? %>
+<div class='container mt-5'>
+  <h2>My Events</h2>
+  <div class='row'>
+    <% @bar.events.each do |event|%>
+      <div class='col-md-4 mb-4'>
+        <div class='card'>
+          <div class='card-body'>
+            <h4 class='card-title'><%= event.name %></h4>
+            <p class='card-text'>Date: <%= event.date %></p>
+            <p class='card-text'>Bar Comment: <%= event.bar_comment %></p>
+            <p class='card-text'>Artist Comment: <%= event.artist_comment %></p>
+            <% if policy(event).edit? %>
+              <%= link_to 'Edit', edit_bar_event_path(@bar, event), class: 'btn btn-secondary' %>
+            <% end %>
+            <% if policy(event).destroy? %>
+              <%= link_to 'Delete', event_path(event), class: 'btn btn-danger', data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
+            <% end %>
+            <% if event.status == 'pending' %>
+              <% if policy(event).accept? %>
+                <%= link_to 'Accept', accept_bar_event_path(@bar, event), class: 'btn btn-success', data: { turbo_method: :patch, turbo_confirm: 'Are you sure?' } %>
+              <% end %>
+              <% if policy(event).decline? %>
+                <%= link_to 'Decline', decline_bar_event_path(@bar, event), class: 'btn btn-danger', data: { turbo_method: :patch, turbo_confirm: 'Are you sure?' } %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
