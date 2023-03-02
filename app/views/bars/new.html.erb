@@ -5,7 +5,9 @@
         <h3>Create a new bar</h3>
         <%= simple_form_for @bar do |f| %>
           <%= f.input :name, placeholder: 'Nom du bar?' %>
-          <%= f.input :location, placeholder: 'Adresse du bar?'%>
+          <%= f.input :location, input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
+  wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}} %>
+
           <%= f.input :url, placeholder: 'Où est-ce que se hacke?' %>
           <%= f.input :telephone, placeholder: 'Où est-ce que ça se call?' %>
           <%= f.input :photo, as: :file %>
