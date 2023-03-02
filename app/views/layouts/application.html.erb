@@ -15,7 +15,11 @@
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
   </head>
 
-  <body>
-    <%= yield %>
-  </body>
+  <% if @home %>
+    <body class="body-color">
+  <% else %>
+    <body>
+  <% end %>
+        <%= yield %>
+    </body>
 </html>
