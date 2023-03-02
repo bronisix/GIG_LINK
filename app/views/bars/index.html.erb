@@ -1,25 +1,22 @@
 <%= render 'shared/navbarmusician' %>
 <div class="container">
-<h1>All Bars</h1>
-
-
-<div class="">
-  <div class="row">
-    <div class="col-8">
-      <%= render "barlist", bars: @bars %>
-    </div>
-    <div class="col-4">
-      <div style="height: 100vh;"
-        data-controller="map"
-        data-map-markers-value="<%= @markers.to_json %>"
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-      </div>
+  <div class="container">
+    <div class="container">
+      <div class="row">
+        <div class="col-8">
+          <%= render "search" %>
+          <%= render "barlist", bars: @bars %>
+        </div>
+        <div class="col-4">
+          <div style="height: 100vh;"
+            data-controller="map"
+            data-map-markers-value="<%= @markers.to_json %>"
+            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+          </div>
+        </div>
     </div>
   </div>
-
-
-<hr>
-<%= render "myevents", events: @events %>
-
-
 </div>
+
+<h1>My Events</h1>
+<%= render "myevents", events: @events %>
