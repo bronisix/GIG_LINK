@@ -21,7 +21,7 @@ class EventsController < ApplicationController
     @event.bar = @bar
     authorize @event
     if @event.save
-      redirect_to bar_path(@bar)
+      redirect_to my_own_events_path
     else
       render :new, status: :unprocessable_entity
     end

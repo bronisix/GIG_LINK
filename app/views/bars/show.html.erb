@@ -1,4 +1,4 @@
-<%= render 'shared/navbar' %>
+<%= render 'shared/navbarmusician' %>
 <div class="row">
   <div class="col-6">
     <div class='bar_banner' style='background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path @bar.photo.key %>); backdrop-filter: blur(5px);'>
@@ -9,18 +9,13 @@
     </div>
     <div class="container">
       <h2><%= @bar.name %></h2>
-      <ul>
-        <li> Techno </li>
-        <li> Electro </li>
-        <li> LGBT </li>
-      </ul>
       <p><%= @bar.description %></p>
       <hr>
       <h6><i class="fa-solid fa-phone"></i> <%= @bar.telephone %></h6>
       <h6><i class="fa-solid fa-location-pin"></i> <%= @bar.location %></h6>
     </div>
   </div>
-  <div class="col-6 text-white" style="background: #191825">
+  <div class="col-6 text-white" style="background: #191825; height:100vh">
     <div class="container">
       <h3>Whant to perform in this bar ?</h3>
       <p> <%= form_with model: @event, url: bar_events_path(@bar) do |form| %>
