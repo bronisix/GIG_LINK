@@ -1,0 +1,32 @@
+.form-control {
+  background-color: transparent;
+  color: #693B58;
+  border-color: transparent;
+  border-radius: 20px;
+  padding: 10px;
+  font-size: 16px;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 4px 8px 0 rgba(97, 97, 97, 0.2);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #693B58;
+}
+
+.btn-search {
+  margin: 5px;
+  padding: 10px 20px;
+  background-color: #2f1224;
+  box-shadow: 0 4px 8px 0 rgba(97, 97, 97, 0.2);
+  color: white;
+  border-color: transparent;
+  border-radius: 100px;
+  font-size: 16px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.btn-search:hover {
+  background-color: #fa7d2a;
+}
