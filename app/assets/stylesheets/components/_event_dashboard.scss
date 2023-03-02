@@ -1,0 +1,67 @@
+.pending h3 {
+  background-color: #9dff0088;
+  font-size: 36px;
+}
+
+.accepted h3 {
+  background-color: #ff910088;
+  font-size: 36px;
+}
+
+.passed h3 {
+  // background-color: #ffff0088;
+  font-size: 36px;
+}
+
+.declined h3 {
+  background-color: #ff000088;
+  font-size: 36px;
+}
+
+.card-event {
+  margin-bottom: 10px;
+  overflow: hidden;
+  height: 140px;
+  background: white;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
+.card-event img {
+  height: 100%;
+  width: 140px;
+  object-fit: cover;
+}
+
+.card-event h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-event p {
+  font-size: 16px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-event .card-event-infos {
+  padding: 16px;
+  flex-grow: 1;
+}
+
+.events-btn {
+  width: 140px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  align-items: center;
+}
+.events-btn btn {
+  width: 80px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  align-items: center;
+}
