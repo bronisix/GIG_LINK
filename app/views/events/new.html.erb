@@ -13,6 +13,21 @@
     </div>
   <% end %>
 
+  <%= simple_form_for [@bar, @event],
+  html: {
+  data: {
+  controller: 'flatpickr'
+  }
+  } do |f| %>
+  <%= f.input :date, as: :string,
+  input_html: {
+  data: {
+  flatpickr_target: 'startDateInput',
+  }
+  } %>
+  <%= f.submit 'Book now!', class: 'btn btn-primary' %>
+  <% end %>
+
   <div class="form-group">
     <%= form.label :date %>
     <%= form.date_field :date, class: "form-control" %>
