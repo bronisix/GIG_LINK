@@ -6,6 +6,10 @@ class EventsController < ApplicationController
     @events = policy_scope(Event)
   end
 
+  def my_own_events
+    @my_own_events = policy_scope(Event)
+  end
+
   def new
     @event = Event.new
     authorize @event

@@ -3,8 +3,8 @@ class ApplicationController < ActionController::Base
 
   include Pundit::Authorization
 
-  after_action :verify_authorized, except: [:index, :mybars], unless: :skip_pundit?
-  after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
+  after_action :verify_authorized, except: [:index, :my_own_events, :mybars], unless: :skip_pundit?
+  after_action :verify_policy_scoped, only: [:index, :my_own_events], unless: :skip_pundit?
 
    # Uncomment when you *really understand* Pundit!
   # rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
