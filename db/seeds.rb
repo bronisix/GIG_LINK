@@ -49,6 +49,12 @@ puts "Creating events..."
 bar1 = Bar.find_by(name: "Les Marquises (Guillaume)")
 event = Event.new(name: "Les DILF", date: Date.today, bar_id: bar1.id, user: guillaume, status: :pending)
 event.save!
+event = Event.new(name: "GOGOGO", date: Date.today, bar_id: bar1.id, user: guillaume, status: :accepted)
+event.save!
+event = Event.new(name: "le sans amis", date: Date.today, bar_id: bar1.id, user: guillaume, status: :declined)
+event.save!
+event = Event.new(name: "OLD SCHOOL", date: Date.today, bar_id: bar1.id, user: guillaume, status: :passed)
+event.save!
 
 puts "Created #{event.name}"
 
