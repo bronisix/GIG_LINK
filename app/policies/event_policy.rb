@@ -9,7 +9,7 @@ class EventPolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    record.user == user
   end
 
   def accept?
