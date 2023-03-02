@@ -28,6 +28,7 @@ class BarsController < ApplicationController
 
   def show
     authorize @bar
+    @event = Event.new
   end
 
   def new

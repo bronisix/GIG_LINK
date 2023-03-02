@@ -1,18 +1,26 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <%= link_to 'Gig Link', root_path, class:"navbar-brand" %>
+    <%= link_to root_path do %>
+      <div class ="navbar-brand">
+      <i class="fa-solid fa-beer-mug-empty"></i> Gig Link
+      </div>
+    <% end %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
-    <li class="nav-item active">
-        <%= link_to "Edit my profile", edit_user_registration_path,
+      <li class="nav-item active" style="text-align: left"">
+        <%= link_to "Search bars |", bars_path,
+            class: "nav-link" %>
+      </li>
+      <li class="nav-item active left">
+        <%= link_to "My events |", my_own_events_path,
             class: "nav-link" %>
       </li>
       <li class="nav-item active">
-        <%= link_to "I have a bar", mybars_path,
+        <%= link_to "Register a bar |", mybars_path,
             class: "nav-link" %>
       </li>
       <li class="nav-item active">
