@@ -1,10 +1,17 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   include Pundit::Authorization
 
-  after_action :verify_authorized, except: [:index, :mybars], unless: :skip_pundit?
-  after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
+  after_action :verify_authorized, except: [:index, :my_own_events, :mybars], unless: :skip_pundit?
+  after_action :verify_policy_scoped, only: [:index, :my_own_events], unless: :skip_pundit?
+
+  def configure_permitted_parameters
+
+    # For additional in app/views/devise/registrations/edit.html.erb
+    devise_parameter_sanitizer.permit(:account_update, keys: [:band_name, :band_style, :description, :photo])
+  end
 
    # Uncomment when you *really understand* Pundit!
   # rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
