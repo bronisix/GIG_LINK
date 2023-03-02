@@ -7,12 +7,16 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
-    <li class="nav-item active">
-        <%= link_to "Edit my profile", edit_user_registration_path,
+      <li class="nav-item active" style="text-align: left"">
+        <%= link_to "Search bars |", bars_path,
+            class: "nav-link" %>
+      </li>
+      <li class="nav-item active left">
+        <%= link_to "My events |", my_own_events_path,
             class: "nav-link" %>
       </li>
       <li class="nav-item active">
-        <%= link_to "I have a bar", mybars_path,
+        <%= link_to "Register a bar |", mybars_path,
             class: "nav-link" %>
       </li>
       <li class="nav-item active">
