@@ -1,15 +1,16 @@
-<div class="cards-bar-grid">
+<div class="container">
+  <div class="bar-grid">
     <% bars.each do |bar| %>
-
-          <%= link_to bar_path(bar) do %>
-            <div class="card-bar mb-3">
-              <img src= <%= cl_image_path bar.photo.key%> />
-              <div class="card-bar-infos">
-                <h2> <%= bar.name %> </h2>
-                <p> <%= bar.location %></p>
-              </div>
-
+      <%= link_to bar_path(bar) do  %>
+        <div class="card" style="width: 100%">
+          <%= cl_image_tag(bar.photo.key, class: "card-img-top") %>
+          <div class="card-body">
+              <h5 class="card-title"> <%= bar.name %></h5>
+              <h6 class="card-subtitle mb-2 text-muted"> <%= bar.location %></h6>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
         </div>
       <% end %>
     <% end %>
   </div>
+</div>
