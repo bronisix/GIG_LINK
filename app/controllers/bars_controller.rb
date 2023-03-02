@@ -13,6 +13,13 @@ class BarsController < ApplicationController
 
       }
     end
+
+    if params[:query].present?
+      sql_query = "name ILIKE :query OR location ILIKE :query"
+      @bars = Bar.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @bars = policy_scope(Bar)
+    end
   end
 
   def mybars
@@ -39,8 +46,6 @@ class BarsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-
-
   def edit
     @bar = Bar.find(params[:id])
     authorize @bar
