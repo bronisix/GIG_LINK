@@ -1,0 +1,19 @@
+.list-group-items {
+  display: flex;
+  align-items: center;
+}
+
+.list-group-items .tab-underlined {
+  color: black;
+  padding: 8px;
+  margin: 8px;
+  opacity: .4;
+  cursor: pointer;
+  text-decoration: none;
+  border-bottom: 4px solid transparent;
+}
+
+.list-group-items .tab-underlined.active {
+  opacity: 1;
+  border-bottom: 3px solid #555555;
+}

@@ -1,0 +1,12 @@
+
+<div class="list-group">
+  <% events.each do |event| %>
+    <div class="card-bar mb-3">
+      <h4 class="list-group-item-heading"><%= event.name %></h4>
+      <p class="list-group-item-text">Date: <%= event.date %></p>
+      <p class="list-group-item-text">Bar Comment: <%= event.bar_comment %></p>
+      <p class="list-group-item-text">Artist Comment: <%= event.artist_comment %></p>
+      <p class="list-group-item-text">Status: <%= event.status %></p>
+    </div>
+  <% end %>
+</div>

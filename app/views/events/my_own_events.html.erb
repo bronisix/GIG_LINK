@@ -1,5 +1,20 @@
 <%= render 'shared/navbarmusician' %>
 
-<div class="container">
-<%= render "events", events: @my_own_events %>
+<div class="container mt-3">
+
+  <div class="row">
+    <% ['passed', 'declined', 'pending', 'accepted'].each do |status| %>
+      <div class="col-md-3 <%= status %>">
+        <h3><%= status.capitalize %></h3>
+        <% filtered_events = @my_own_events.select { |event| event.status == status } %>
+        <% if filtered_events.any? %>
+          <%= render "events", events: filtered_events %>
+        <% else %>
+          <p>No events with status <%= status %> found.</p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+
 </div>
