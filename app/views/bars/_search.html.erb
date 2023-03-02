@@ -1,8 +1,24 @@
-      <%= form_with url: bars_path, method: :get, class: "d-flex" do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: "Search by city, address, name"
-        %>
-        <%= submit_tag "Search", class: "btn btn-primary" %>
-      <% end %>
+<%= form_with url: bars_path, method: :get do |f| %>
+  <div class="input-group">
+    <%= f.text_field :query, class: "form-control", placeholder: "Search by city, address, name" %>
+    <div class="input-group-append">
+      <%= f.submit "🔍", class: "btn-search" %>
+    </div>
+  </div>
+<% end %>
+
+<style>
+.form-control {
+  background-color: white;
+  color:white;
+  border-radius: 20px;
+}
+
+.btn-search {
+  margin: 5px;
+  padding: 5px
+  backgrounnd-color: white;
+  color: blue;
+  border-radius: 100px;
+}
+</style>

@@ -1,58 +1,67 @@
 <%= render 'shared/navbar' %>
-<div class='bar_banner' style='background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path @bar.photo.key %>); backdrop-filter: blur(5px);'>
-  <div class='container'>
-    <%= link_to @bar.url do %>
-      <h1><%= @bar.name %></h1>
-    <% end %>
-    <br>
-    <p><i class="fa-solid fa-phone"></i> <%= @bar.telephone %></p>
-    <br>
-  </div>
-  <div>
-    <%= link_to '', bar_path(@bar), class:"fa-solid fa-trash delete_bar_btn", data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} if policy(@bar).destroy? %>
-    <%= link_to '', edit_bar_path, class:"fa-regular fa-pen-to-square edit_bar_btn", method: :patch if policy(@bar).edit? %>
-  </div>
-</div>
-
-<div class='container mt-5'>
-  <div class='row'>
-    <div class='col-md-8'>
-    </div>
-    <div class='col-md-4 text-right'>
-      <%= link_to 'Back to Bars', bars_path, class: 'btn btn-dark' %>
-      <%= link_to 'Create an event', new_bar_event_path(@bar), class: 'btn btn-success' %>
-      <%# <%= link_to 'Delete', bar_path(@bar), class: 'btn btn-danger', data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} if policy(@bar).destroy? %>
-    </div>
-  </div>
-</div>
-<div class='container mt-5'>
-  <h2>My Events</h2>
-  <div class='row'>
-    <% @bar.events.each do |event|%>
-      <div class='col-md-4 mb-4'>
-        <div class='card'>
-          <div class='card-body'>
-            <h4 class='card-title'><%= event.name %></h4>
-            <p class='card-text'>Date: <%= event.date %></p>
-            <p class='card-text'>Bar Comment: <%= event.bar_comment %></p>
-            <p class='card-text'>Artist Comment: <%= event.artist_comment %></p>
-            <% if policy(event).edit? %>
-              <%= link_to 'Edit', edit_bar_event_path(@bar, event), class: 'btn btn-secondary' %>
-            <% end %>
-            <% if policy(event).destroy? %>
-              <%= link_to 'Delete', event_path(event), class: 'btn btn-danger', data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
-            <% end %>
-            <% if event.status == 'pending' %>
-              <% if policy(event).accept? %>
-                <%= link_to 'Accept', accept_bar_event_path(@bar, event), class: 'btn btn-success', data: { turbo_method: :patch, turbo_confirm: 'Are you sure?' } %>
-              <% end %>
-              <% if policy(event).decline? %>
-                <%= link_to 'Decline', decline_bar_event_path(@bar, event), class: 'btn btn-danger', data: { turbo_method: :patch, turbo_confirm: 'Are you sure?' } %>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
+<div class="row">
+  <div class="col-6">
+    <div class='bar_banner' style='background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path @bar.photo.key %>); backdrop-filter: blur(5px);'>
+      <div>
+      <%= link_to '', bar_path(@bar), class:"fa-solid fa-trash delete_bar_btn", data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} if policy(@bar).destroy? %>
+      <%= link_to '', edit_bar_path, class:"fa-regular fa-pen-to-square edit_bar_btn", method: :patch if policy(@bar).edit? %>
       </div>
-    <% end %>
+    </div>
+    <div class="container">
+      <h2><%= @bar.name %></h2>
+      <ul>
+        <li> Techno </li>
+        <li> Electro </li>
+        <li> LGBT </li>
+      </ul>
+      <p><%= @bar.description %></p>
+      <hr>
+      <h6><i class="fa-solid fa-phone"></i> <%= @bar.telephone %></h6>
+      <h6><i class="fa-solid fa-location-pin"></i> <%= @bar.location %></h6>
+    </div>
+  </div>
+  <div class="col-6 text-white" style="background: #191825">
+    <div class="container">
+      <h3>Whant to perform in this bar ?</h3>
+      <p> <%= form_with model: @event, url: bar_events_path(@bar) do |form| %>
+        <% if @event.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+              <ul>
+                <% @event.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div data-controller="flatpicker">
+          <%= simple_form_for [@bar, @event],
+            html: {
+              data: {
+                controller: 'flatpicker'
+                    }
+                  } do |f| %>
+          <%= f.input :date,
+                      as: :string,
+                      input_html: {
+                      data: {
+                        flatpicker_target: 'DateInput',
+                      }
+                    } %>
+          <div class="form-group">
+            <%= form.label :name %>
+            <%= form.text_field :name, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= form.label :bar_comment %>
+            <%= form.text_area :bar_comment, class: "form-control" %>
+          </div>
+          <%= f.submit 'Book the event', class: 'btn btn-primary' %>
+          <% end %>
+          <%= link_to 'Back', bar_path(@bar), class:"btn btn-light" %>
+        </div>
+      <% end %>
+      </p>
+    </div>
   </div>
 </div>
