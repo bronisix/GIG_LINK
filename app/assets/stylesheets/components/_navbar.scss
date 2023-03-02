@@ -3,10 +3,39 @@
   background: white;
 }
 
+.navbar-home {
+  background: transparent;
+  color: white;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  a {
+    color: white;
+    margin-right: 10px;
+  }
+
+  .navbar-brand {
+    color: white;
+    i {
+      color: white;
+    }
+  }
+
+}
+
 .navbar .navbar-collapse {
   flex-grow: 0;
 }
+.navbar-home .navbar-collapse {
+  flex-grow: 0;
+}
+
+
 
 .navbar .navbar-brand img {
+  width: 40px;
+}
+
+.navbar-home .navbar-brand img {
   width: 40px;
 }
