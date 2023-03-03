@@ -109,44 +109,44 @@ puts "Created #{bar.name}"
 
 puts "Creating events..."
 bar1 = Bar.find_by(name: "Terrain Vague")
-event = Event.new(name: "Les DILFs se la jouent", date: "2023-02-24", bar_id: bar1.id, user: robin, status: :passed, comment: "On est chaud béton pour défricher le Terrain Vague!")
+event = Event.new(name: "Les DILFs se la jouent", date: "2023-02-24", bar_id: bar1.id, user: robin, status: :passed, artist_comment: "On est chaud béton pour défricher le Terrain Vague!")
 event.save!
-event = Event.new(name: "La revanche des DILFs", date: "2023-02-25", bar_id: bar1.id, user: robin, status: :declined, comment: "On repasse le lendemain pour bitumer tout ça?")
+event = Event.new(name: "La revanche des DILFs", date: "2023-02-25", bar_id: bar1.id, user: robin, status: :declined, artist_comment: "On repasse le lendemain pour bitumer tout ça?")
 event.save!
-event = Event.new(name: "La revanche des DILFs", date: "2023-03-06", bar_id: bar1.id, user: robin, status: :declined, comment: "Promis cette fois on se tient bien!")
+event = Event.new(name: "La revanche des DILFs", date: "2023-03-06", bar_id: bar1.id, user: robin, status: :declined, artist_comment: "Promis cette fois on se tient bien!")
 event.save!
 
 puts "Created #{event.name}"
 
 bar2 = Bar.find_by(name: "Cafe Populaire")
-event = Event.new(name: "A la DILF AGAIN", date: "2023-03-07", bar_id: bar2.id, user: robin, status: :pending, comment: "On connait la proprio!")
+event = Event.new(name: "A la DILF AGAIN", date: "2023-03-07", bar_id: bar2.id, user: robin, status: :pending, artist_comment: "On connait la proprio!")
 
 event.save!
 
 puts "Created #{event.name}"
 
 bar3 = Bar.find_by(name: "les Marquises")
-event = Event.new(name: "Les DILFs se font les marquises", date: "2023-03-06", bar_id: bar3.id, user: robin, status: :accepted, comment: "Chauds pour mettre l'ambiance à la basse électrique?")
+event = Event.new(name: "Les DILFs se font les marquises", date: "2023-03-06", bar_id: bar3.id, user: robin, status: :accepted, artist_comment: "Chauds pour mettre l'ambiance à la basse électrique?")
 
 event.save!
 
 puts "Created #{event.name}"
 
 bar4 = Bar.find_by(name: "Le Caveau des Oubliettes")
-event = Event.new(name: "Les DILFs font de la spéléo", date: "2023-02-15", bar_id: bar4.id, user: robin, status: :passed, comment: "Les DILFs font de la spéléo")
+event = Event.new(name: "Les DILFs font de la spéléo", date: "2023-02-15", bar_id: bar4.id, user: robin, status: :passed, artist_comment: "Les DILFs font de la spéléo")
 
 event.save!
 
 puts "Created #{event.name}"
 
 bar5 = Bar.find_by(name: "Le Merle Moqueur")
-event = Event.new(name: "La 5eme Symphonie dans ton bar", date: "2023-03-12", bar_id: bar5.id, user: jerome, status: :pending, comment: "Hello, on serait partant avec mon orchestre pour venir faire découvrir la 5ème de Beethoven dans le bar ; ça vous branche?")
+event = Event.new(name: "La 5eme Symphonie dans ton bar", date: "2023-03-12", bar_id: bar5.id, user: jerome, status: :pending, artist_comment: "Hello, on serait partant avec mon orchestre pour venir faire découvrir la 5ème de Beethoven dans le bar ; ça vous branche?")
 
 event.save!
 
 puts "Created #{event.name}"
 
-event = Event.new(name: "Live de notre nouvel EP", date: "2023-03-12", bar_id: bar5.id, user: agathe, status: :pending, comment: "Coucou, on vient de sortir un EP et on serait bouillants pour le jouer dans ton bar! Tu peux l'écouter ici : https://soundcloud.com/wearefigmalife")
+event = Event.new(name: "Live de notre nouvel EP", date: "2023-03-12", bar_id: bar5.id, user: agathe, status: :pending, artist_comment: "Coucou, on vient de sortir un EP et on serait bouillants pour le jouer dans ton bar! Tu peux l'écouter ici : https://soundcloud.com/wearefigmalife")
 event.save!
 
 puts "Created #{event.name}"
