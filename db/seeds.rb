@@ -120,32 +120,29 @@ puts "Created #{event.name}"
 
 bar2 = Bar.find_by(name: "Cafe Populaire")
 event = Event.new(name: "A la DILF AGAIN", date: "2023-03-07", bar_id: bar2.id, user: robin, status: :pending, artist_comment: "On connait la proprio!")
-
 event.save!
 
 puts "Created #{event.name}"
 
 bar3 = Bar.find_by(name: "les Marquises")
 event = Event.new(name: "Les DILFs se font les marquises", date: "2023-03-06", bar_id: bar3.id, user: robin, status: :accepted, artist_comment: "Chauds pour mettre l'ambiance à la basse électrique?")
-
 event.save!
 
 puts "Created #{event.name}"
 
 bar4 = Bar.find_by(name: "Le Caveau des Oubliettes")
 event = Event.new(name: "Les DILFs font de la spéléo", date: "2023-02-15", bar_id: bar4.id, user: robin, status: :passed, artist_comment: "Les DILFs font de la spéléo")
-
 event.save!
 
 puts "Created #{event.name}"
 
 bar5 = Bar.find_by(name: "Le Merle Moqueur")
 event = Event.new(name: "La 5eme Symphonie dans ton bar", date: "2023-03-12", bar_id: bar5.id, user: jerome, status: :pending, artist_comment: "Hello, on serait partant avec mon orchestre pour venir faire découvrir la 5ème de Beethoven dans le bar ; ça vous branche?")
-
 event.save!
 
 puts "Created #{event.name}"
 
+bar5 = Bar.find_by(name: "Le Merle Moqueur")
 event = Event.new(name: "Live de notre nouvel EP", date: "2023-03-12", bar_id: bar5.id, user: agathe, status: :pending, artist_comment: "Coucou, on vient de sortir un EP et on serait bouillants pour le jouer dans ton bar! Tu peux l'écouter ici : https://soundcloud.com/wearefigmalife")
 event.save!
 

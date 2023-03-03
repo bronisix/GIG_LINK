@@ -2,7 +2,7 @@
   <div class="bar-grid">
     <% bars.each do |bar| %>
       <%= link_to bar_path(bar) do  %>
-        <div class="card" style="width: 100%">
+        <div class="card">
           <%= cl_image_tag(bar.photo.key, class: "card-img-top") %>
           <div class="card-body">
             <h5 class="card-title"> <%= bar.name %></h5>
