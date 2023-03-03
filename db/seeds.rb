@@ -47,31 +47,33 @@ puts "Created #{bar.name}"
 
 puts "Creating events..."
 bar1 = Bar.find_by(name: "Les Marquises (Guillaume)")
-event = Event.new(name: "Les DILF", date: Date.today, bar_id: bar1.id, user: guillaume, status: :pending)
+event = Event.new(name: "Jam session", date: "2023-04-26", bar_id: bar1.id, user: guillaume, status: :pending)
 event.save!
-event = Event.new(name: "GOGOGO", date: Date.today, bar_id: bar1.id, user: guillaume, status: :accepted)
+event = Event.new(name: "Dance Party", date: "2023-04-28", bar_id: bar1.id, user: guillaume, status: :accepted)
 event.save!
-event = Event.new(name: "le sans amis", date: Date.today, bar_id: bar1.id, user: guillaume, status: :declined)
+event = Event.new(name: "ex fan des 60's", date: "2023-04-15", bar_id: bar1.id, user: guillaume, status: :declined)
 event.save!
-event = Event.new(name: "OLD SCHOOL", date: Date.today, bar_id: bar1.id, user: guillaume, status: :passed)
+event = Event.new(name: "OLD SCHOOL", date: "2023-01-17", bar_id: bar1.id, user: guillaume, status: :passed)
+event.save!
+event = Event.new(name: "fête de la musique", date: "2023-06-21", bar_id: bar1.id, user: guillaume, status: :passed)
 event.save!
 
 puts "Created #{event.name}"
 
 bar2 = Bar.find_by(name: "Café Populaire (Audrey)")
-event = Event.new(name: "Les arti-chauds", date: Date.today, bar_id: bar2.id, user: audrey, status: :accepted)
+event = Event.new(name: "Fête de la musique", date: "2023-06-21", bar_id: bar2.id, user: audrey, status: :pending)
 event.save!
 
 puts "Created #{event.name}"
 
 bar3 = Bar.find_by(name: "Dr Feelgood (Hugo)")
-event = Event.new(name: "DaftPunk", date: Date.today, bar_id: bar3.id, user: hugo, status: :passed)
+event = Event.new(name: "Jazz session", date: "2023-03-01", bar_id: bar3.id, user: hugo, status: :passed)
 event.save!
 
 puts "Created #{event.name}"
 
 bar4 = Bar.find_by(name: "Les Marquises (Guillaume)")
-event = Event.new(name: "Beyoncé", date: Date.today, bar_id: bar4.id, user: guillaume, status: :pending)
+event = Event.new(name: "Rock the cazbah", date: "2023-03-31", bar_id: bar4.id, user: guillaume, status: :pending)
 event.save!
 
 puts "Finished!"
