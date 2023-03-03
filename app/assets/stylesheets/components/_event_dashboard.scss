@@ -1,36 +1,74 @@
-.pending h3 {
-  background-color: #9dff0088;
-  font-size: 36px;
-}
-
-.accepted h3 {
+.btn-pending {
+  width: 100px;
+  padding: 5px;
+  border-radius: 30px;
   background-color: #ff910088;
-  font-size: 36px;
+  border-color: transparent;
+  margin-bottom: 15px;
+  cursor: text;
 }
 
-.passed h3 {
-  // background-color: #ffff0088;
-  font-size: 36px;
+.btn-accepted {
+  width: 100px;
+  padding: 5px;
+  border-radius: 30px;
+  background-color: #9dff0088;
+  border-color: transparent;
+  margin-bottom: 15px;
+  cursor: text;
 }
 
-.declined h3 {
+.btn-passed {
+  width: 100px;
+  padding: 5px;
+  border-radius: 30px;
+  background-color: #ffff0088;
+  border-color: transparent;
+  margin-bottom: 15px;
+  cursor: text;
+}
+
+.btn-declined {
+  width: 100px;
+  padding: 5px;
+  border-radius: 30px;
   background-color: #ff000088;
-  font-size: 36px;
+  border-color: transparent;
+  margin-bottom: 15px;
+  cursor: text;
 }
+
 
 .card-event {
   margin-bottom: 10px;
   overflow: hidden;
-  height: 140px;
-  background: white;
+  height: auto;
+  background: #191825;
+  color: white;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid black;
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease-in-out;
+  width: 600px;
+  text-overflow:ellipsis;
+  overflow:hidden;
+  a{
+    color: white
+  }
+  a:hover{
+    color: #E67E22
+  }
+
+}
+
+.card-event:hover {
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
 }
 
 .card-event img {
-  height: 100%;
-  width: 140px;
+  height: 250px;
+  width: 250px;
   object-fit: cover;
 }
 
@@ -58,10 +96,20 @@
   margin-top: 3px;
   margin-bottom: 3px;
   align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
+<<<<<<< HEAD
 .events-btn .btn {
   width: 120px;
   margin-top: 3px;
   margin-bottom: 3px;
   align-items: center;
+=======
+
+.events-btn .btn {
+  width: 100px;
+  margin: 10px;
+>>>>>>> 00891874f928be418daccf897fc8040235def009
 }

@@ -5,14 +5,20 @@
   }
 
   .card {
-    height: 100%;
+    height: 350px;
     margin: 10px;
     border-radius: 15px;
     box-shadow: 0 4px 8px 0 rgba(97, 97, 97, 0.2);
     transition: 0.3s;
-    background-color: transparent;
+    background-color: #191825;
     color: white;
-    overflow: hidden;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    // Addition lines for 2 line or multiline ellipsis
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    white-space: normal;
   }
 
   .card:hover {
