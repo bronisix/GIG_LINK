@@ -1,9 +1,9 @@
 <%= render 'shared/navbarowner' %>
 <div class="row">
   <div class="col-6">
-    <h1>Mes bars</h1>
+    <h1>Mes bars <%= link_to 'Add new bar', new_bar_path, class:'btn btn-primary' %></h1>
     <%= render "barlist", bars: @mybars %>
-    <%= link_to 'Add new bar', new_bar_path, class:'btn btn-primary' %>
+
   </div>
 
   <div class="col-6">
