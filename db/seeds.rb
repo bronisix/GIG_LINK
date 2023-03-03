@@ -108,69 +108,44 @@ bar.save!
 puts "Created #{bar.name}"
 
 puts "Creating events..."
-<<<<<<< HEAD
 bar1 = Bar.find_by(name: "Terrain Vague")
 event = Event.new(name: "Les DILFs se la jouent", date: "2023-02-24", bar_id: bar1.id, user: robin, status: :passed, comment: "On est chaud béton pour défricher le Terrain Vague!")
 event.save!
 event = Event.new(name: "La revanche des DILFs", date: "2023-02-25", bar_id: bar1.id, user: robin, status: :declined, comment: "On repasse le lendemain pour bitumer tout ça?")
 event.save!
 event = Event.new(name: "La revanche des DILFs", date: "2023-03-06", bar_id: bar1.id, user: robin, status: :declined, comment: "Promis cette fois on se tient bien!")
-=======
-bar1 = Bar.find_by(name: "Les Marquises (Guillaume)")
-event = Event.new(name: "Jam session", date: "2023-04-26", bar_id: bar1.id, user: guillaume, status: :pending)
-event.save!
-event = Event.new(name: "Dance Party", date: "2023-04-28", bar_id: bar1.id, user: guillaume, status: :accepted)
-event.save!
-event = Event.new(name: "ex fan des 60's", date: "2023-04-15", bar_id: bar1.id, user: guillaume, status: :declined)
-event.save!
-event = Event.new(name: "OLD SCHOOL", date: "2023-01-17", bar_id: bar1.id, user: guillaume, status: :passed)
-event.save!
-event = Event.new(name: "fête de la musique", date: "2023-06-21", bar_id: bar1.id, user: guillaume, status: :passed)
->>>>>>> 00891874f928be418daccf897fc8040235def009
 event.save!
 
 puts "Created #{event.name}"
 
-<<<<<<< HEAD
 bar2 = Bar.find_by(name: "Cafe Populaire")
 event = Event.new(name: "A la DILF AGAIN", date: "2023-03-07", bar_id: bar2.id, user: robin, status: :pending, comment: "On connait la proprio!")
-=======
-bar2 = Bar.find_by(name: "Café Populaire (Audrey)")
-event = Event.new(name: "Fête de la musique", date: "2023-06-21", bar_id: bar2.id, user: audrey, status: :pending)
->>>>>>> 00891874f928be418daccf897fc8040235def009
+
 event.save!
 
 puts "Created #{event.name}"
 
-<<<<<<< HEAD
 bar3 = Bar.find_by(name: "les Marquises")
 event = Event.new(name: "Les DILFs se font les marquises", date: "2023-03-06", bar_id: bar3.id, user: robin, status: :accepted, comment: "Chauds pour mettre l'ambiance à la basse électrique?")
-=======
-bar3 = Bar.find_by(name: "Dr Feelgood (Hugo)")
-event = Event.new(name: "Jazz session", date: "2023-03-01", bar_id: bar3.id, user: hugo, status: :passed)
->>>>>>> 00891874f928be418daccf897fc8040235def009
+
 event.save!
 
 puts "Created #{event.name}"
 
-<<<<<<< HEAD
 bar4 = Bar.find_by(name: "Le Caveau des Oubliettes")
 event = Event.new(name: "Les DILFs font de la spéléo", date: "2023-02-15", bar_id: bar4.id, user: robin, status: :passed, comment: "Les DILFs font de la spéléo")
-=======
-bar4 = Bar.find_by(name: "Les Marquises (Guillaume)")
-event = Event.new(name: "Rock the cazbah", date: "2023-03-31", bar_id: bar4.id, user: guillaume, status: :pending)
->>>>>>> 00891874f928be418daccf897fc8040235def009
+
 event.save!
 
 puts "Created #{event.name}"
 
 bar5 = Bar.find_by(name: "Le Merle Moqueur")
 event = Event.new(name: "La 5eme Symphonie dans ton bar", date: "2023-03-12", bar_id: bar5.id, user: jerome, status: :pending, comment: "Hello, on serait partant avec mon orchestre pour venir faire découvrir la 5ème de Beethoven dans le bar ; ça vous branche?")
+
 event.save!
 
 puts "Created #{event.name}"
 
-bar5 = Bar.find_by(name: "Le Merle Moqueur")
 event = Event.new(name: "Live de notre nouvel EP", date: "2023-03-12", bar_id: bar5.id, user: agathe, status: :pending, comment: "Coucou, on vient de sortir un EP et on serait bouillants pour le jouer dans ton bar! Tu peux l'écouter ici : https://soundcloud.com/wearefigmalife")
 event.save!
 
