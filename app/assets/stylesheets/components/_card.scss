@@ -13,14 +13,12 @@
     background-color: #191825;
     color: white;
     text-overflow:ellipsis;
-    overflow: hidden;
-
-    a{
-      color: white
-    }
-    a:hover{
-      color: #E67E22
-    }
+    overflow:hidden;
+    // Addition lines for 2 line or multiline ellipsis
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    white-space: normal;
   }
 
   .card:hover {
