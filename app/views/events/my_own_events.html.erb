@@ -4,7 +4,7 @@
 
   <% ['pending', 'accepted', 'passed', 'declined'].each do |status| %>
     <div class="mb-3 <%= status %>">
-      <h3><%= status.capitalize %></h3>
+      <button class= "btn-<%= status%>"> <%= status.capitalize %> </button>
         <% filtered_events = @my_own_events.select { |event| event.status == status } %>
         <% if filtered_events.any? %>
           <%= render "events", events: filtered_events %>
