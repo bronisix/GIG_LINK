@@ -10,9 +10,15 @@
     border-radius: 15px;
     box-shadow: 0 4px 8px 0 rgba(97, 97, 97, 0.2);
     transition: 0.3s;
-    background-color: transparent;
+    background-color: #191825;
     color: white;
     overflow: hidden;
+    a{
+      color: white
+    }
+    a:hover{
+      color: #E67E22
+    }
   }
 
   .card:hover {

@@ -1,62 +1,74 @@
 <%= render 'shared/navbarmusician' %>
-<div class="row">
-  <div class="col-6">
-    <div class='bar_banner' style='background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path @bar.photo.key %>); backdrop-filter: blur(5px);'>
-      <div>
-      <%= link_to '', bar_path(@bar), class:"fa-solid fa-trash delete_bar_btn", data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} if policy(@bar).destroy? %>
-      <%= link_to '', edit_bar_path, class:"fa-regular fa-pen-to-square edit_bar_btn", method: :patch if policy(@bar).edit? %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class='bar_banner' style='background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path @bar.photo.key %>); backdrop-filter: blur(5px);'>
+        <div class="banner-icons">
+        <%= link_to '', bar_path(@bar), class:"fa-solid fa-trash delete_bar_btn", data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} if policy(@bar).destroy? %>
+        <%= link_to '', edit_bar_path, class:"fa-regular fa-pen-to-square edit_bar_btn", method: :patch if policy(@bar).edit? %>
+        </div>
+      </div>
+      <div class="container">
+        <h2 class="h2bar mt-3 font-weight-bold"><%= @bar.name.upcase %></h2>
+        <h6><i class="fa-solid fa-location-pin"></i> <%= @bar.location %></h6>
+        <h6><i class="fa-solid fa-phone"></i> <%= @bar.telephone %></h6>
+        <hr>
+        <p><%= @bar.description %></p>
       </div>
     </div>
-    <div class="container">
-      <h2><%= @bar.name %></h2>
-      <p><%= @bar.description %></p>
-      <hr>
-      <h6><i class="fa-solid fa-phone"></i> <%= @bar.telephone %></h6>
-      <h6><i class="fa-solid fa-location-pin"></i> <%= @bar.location %></h6>
-    </div>
-  </div>
-  <div class="col-6 text-white" style="background: #191825; height:100vh">
-    <div class="container">
-      <h3>Whant to perform in this bar ?</h3>
-      <p> <%= form_with model: @event, url: bar_events_path(@bar) do |form| %>
-        <% if @event.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
-              <ul>
-                <% @event.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
+    <div class="col-md-6 text-white">
+      <div class="card m-0 h-0 mb-2" style="height: unset">
+        <div class="card-header">
+            <h2 class="text-center">Want to play in this bar ?</h2>
+          </div>
+        <div class="card-body">
+
+        <p> <%= form_with model: @event, url: bar_events_path(@bar) do |form| %>
+          <% if @event.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+                <ul>
+                  <% @event.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <div data-controller="flatpicker">
+            <%= simple_form_for [@bar, @event],
+              html: {
+                data: {
+                  controller: 'flatpicker'
+                      }
+                    } do |f| %>
+            <%= f.input :date,
+                        as: :string,
+                        input_html: {
+                        data: {
+                          flatpicker_target: 'DateInput',
+                        }
+                      } %>
+            <div class="form-group">
+              <%= form.label :name %>
+              <%= form.text_field :name, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= form.label :add_a_comment %>
+              <%= form.text_area :artist_comment, class: "form-control" %>
+            </div>
+            <%= f.submit 'Book the event', class: 'btn btn-primary' %>
             <% end %>
-            </ul>
           </div>
         <% end %>
-        <div data-controller="flatpicker">
-          <%= simple_form_for [@bar, @event],
-            html: {
-              data: {
-                controller: 'flatpicker'
-                    }
-                  } do |f| %>
-          <%= f.input :date,
-                      as: :string,
-                      input_html: {
-                      data: {
-                        flatpicker_target: 'DateInput',
-                      }
-                    } %>
-          <div class="form-group">
-            <%= form.label :name %>
-            <%= form.text_field :name, class: "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= form.label :bar_comment %>
-            <%= form.text_area :bar_comment, class: "form-control" %>
-          </div>
-          <%= f.submit 'Book the event', class: 'btn btn-primary' %>
-          <% end %>
-          <%= link_to 'Back', bar_path(@bar), class:"btn btn-light" %>
+        </p>
         </div>
-      <% end %>
-      </p>
+      </div>
+
+      <div>
+        <h3 style="color: black">Events</h3>
+        <hr style="color: black">
+        <%= render "/events/events", events: @barevents %>
+      </div>
     </div>
   </div>
 </div>
