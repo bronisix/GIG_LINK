@@ -4,10 +4,10 @@
     <div class="card-event">
       <%= cl_image_tag event.bar.photo.key %>
       <div class="card-event-infos">
-        <h2><%= event.name %></h2>
+        <h2><%= event.bar.name %></h2>
         <p>When <br> <%= event.date %></p>
-        <p>Where <br><%= event.bar.name %> <br> <%= event.bar.location %> </p>
-        <p>What <br> <%= event.bar_comment %>
+        <p>Where <br> <%= event.bar.location %> </p>
+        <p>What <br> <%= event.name %>
       </div>
     </div>
   <% end %>
